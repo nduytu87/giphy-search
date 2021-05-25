@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import {
   GiphyGifObject,
   GiphyPaginationObject,
@@ -28,10 +28,19 @@ export class SearchImageComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchTerms
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe((query) => {
-        this.query = query;
-        this.callGiphySearchApi();
+      .pipe(
+        debounceTime(300), 
+        distinctUntilChanged(),
+        switchMap((query: string)=> {
+          this.query = query;
+          return this.giphyApiService
+            .search(this.query, this.giphyGifObjects.length);
+        })
+      ).subscribe((res: GiphySearchResult) => {
+        this.giphyGifObjects = [];
+        this.pagination = res.pagination;
+        this.giphyGifObjects = [...this.giphyGifObjects, ...res.data];
+        this.checkShowMoreButton();
       });
 
     this.callGiphySearchApi();
@@ -51,6 +60,7 @@ export class SearchImageComponent implements OnInit {
     this.giphyApiService
     .search(this.query, this.giphyGifObjects.length)
     .subscribe((res: GiphySearchResult) => {
+      console.log('change');
       this.pagination = res.pagination;
       this.giphyGifObjects = [...this.giphyGifObjects, ...res.data];
       this.checkShowMoreButton();

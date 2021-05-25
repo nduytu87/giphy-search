@@ -1,7 +1,6 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { combineLatest, ObjectUnsubscribedError, Observable, of, Subject } from 'rxjs';
-import { debounceTime, map, scan, share, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { GiphyGifObject, InitialState } from '../giphy';
 
@@ -11,8 +10,6 @@ import { GiphyGifObject, InitialState } from '../giphy';
 
 export class FavoriteService {
 
-  
-  
   state: InitialState =  {
      items: [],
   };

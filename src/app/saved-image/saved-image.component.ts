@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { GiphyGifObject } from '../giphy';
 import { FavoriteService } from '../services/favorite.service';
 

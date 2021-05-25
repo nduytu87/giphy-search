@@ -29,19 +29,4 @@ export class GiphyApiService {
                   .set('offset', `${offset}`)
     })
   }
-
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-        console.log(error);
-
-        this.log(`${operation} failed: ${error.message}`);
-
-        return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-      console.log(`Error: ${message}`);
-  }
 }
