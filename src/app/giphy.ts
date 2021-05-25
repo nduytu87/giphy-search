@@ -70,6 +70,6 @@ export interface GiphyImageBaseData {
     height?: string;
   }
 
-  export interface InitialState {
+  export interface FavoritedState {
     items: GiphyGifObject[];
 }

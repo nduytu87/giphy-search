@@ -2,7 +2,7 @@
     <div id="image-list">
         <app-image-list [giphyGifObjects]="giphyGifObjects"></app-image-list>
     </div>
-    <div *ngIf="giphyGifObjects.length == 0">
+    <div *ngIf="giphyGifObjects.length == 0" class="alert alert-danger">
         You have nothing favorited
     </div>
 </div>

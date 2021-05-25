@@ -4,9 +4,9 @@ import { SavedImageComponent } from './saved-image/saved-image.component';
 import { SearchImageComponent } from './search-image/search-image.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'/search', pathMatch: 'full'},
   {path: 'search', component: SearchImageComponent},
-  {path: 'saved', component: SavedImageComponent}
+  {path: 'saved', component: SavedImageComponent},
+  {path: '', redirectTo:'/search', pathMatch: 'full'}
 ];
 
 @NgModule({

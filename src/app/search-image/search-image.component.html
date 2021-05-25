@@ -8,10 +8,14 @@
     />
   </div>
   <div id="search-result">
+    <div *ngIf="hasNotData" class="alert alert-danger">
+     <p>No results found.</p>
+  </div>
+
     <app-image-list [giphyGifObjects]="giphyGifObjects"></app-image-list>
     <div id="actions-bar">
       <button
-        *ngIf="isShowMore"
+        *ngIf="hasMoreData"
         (click)="loadMoreItems()"
         id="btn-show-more"
         class="btn-primary"
@@ -19,15 +23,15 @@
         Show More
       </button>
     </div>
+
   </div>
 
 
-  <div *ngIf="error" class="alert alert-danger" id="error-wrapper">
-    <h4></h4>
+  <div *ngIf="hasError" class="alert alert-danger">
      <p>Oh no! An error occurred while querying the API. We apologise for the inconvenience.</p>
   </div>
 </div>
-<div class="d-flex justify-content-center" *ngIf="loading">
+<div class="d-flex justify-content-center" *ngIf="hasLoading">
   <div class="spinner-border" role="status" >
     <span class="sr-only" id="loading"></span>
   </div>

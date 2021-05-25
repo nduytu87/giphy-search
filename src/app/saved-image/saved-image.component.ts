@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GiphyGifObject } from '../giphy';
 import { FavoriteService } from '../services/favorite.service';
 
@@ -7,16 +7,10 @@ import { FavoriteService } from '../services/favorite.service';
   templateUrl: './saved-image.component.html',
   styleUrls: ['./saved-image.component.scss']
 })
-export class SavedImageComponent implements OnInit{
+export class SavedImageComponent{
 
-  giphyGifObjects!: GiphyGifObject[];
-  constructor(private favoriteService: FavoriteService) {  
-    this.favoriteService.store.subscribe(state => {
-      const{items} =  state;
-      this.giphyGifObjects = items;
-    })
-  }
-  ngOnInit(): void{
-    this.giphyGifObjects = this.favoriteService.state.items;
-  }
+  //giphyGifObjects!: GiphyGifObject[];
+  giphyGifObjects = this.favoriteService.store.getValue().items;
+
+  constructor(private favoriteService: FavoriteService) {  }
 }

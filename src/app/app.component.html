@@ -5,7 +5,13 @@
     </div>
     <nav class="nav-links">
       <a routerLink="search" routerLinkActive="active">Search</a>
-      <a routerLink="saved" routerLinkActive="active">{{ savedTitle }}</a>
+      <a routerLink="saved" routerLinkActive="active"> My Favorited 
+        <ng-container *ngIf="totalFavorited$ | async as store">
+          <ng-container *ngIf="store.items.length > 0">
+            ({{store.items.length}})
+          </ng-container>
+        </ng-container>
+      </a>
     </nav>
   </div>
 </div>

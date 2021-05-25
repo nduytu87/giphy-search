@@ -1,8 +1,8 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
-import { GiphyGifObject, InitialState } from '../giphy';
+import { GiphyGifObject, FavoritedState } from '../giphy';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,11 @@ import { GiphyGifObject, InitialState } from '../giphy';
 
 export class FavoriteService {
 
-  state: InitialState =  {
+  state: FavoritedState =  {
      items: [],
   };
 
-  store = new Subject<InitialState>();
+  store = new BehaviorSubject<FavoritedState>(this.state);
 
   save(giphyGifObject: GiphyGifObject) {
     if(this.state.items.some((element:GiphyGifObject)=>  giphyGifObject.id === element.id)) {
