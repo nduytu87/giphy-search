@@ -1,0 +1,27 @@
+<div class="container" style="padding-bottom: 32px">
+  <div id="search-bar">
+    <input
+      #searchBox
+      id="search-box"
+      placeholder="Search GIFs..."
+      (input)="search(searchBox.value)"
+    />
+  </div>
+  <div id="search-result">
+    <app-image-list [giphyGifObjects]="giphyGifObjects"></app-image-list>
+    <div id="actions-bar">
+      <button
+        *ngIf="isShowMore"
+        (click)="loadMoreItems()"
+        id="btn-show-more"
+        class="btn-primary"
+      >
+        Show More
+      </button>
+    </div>
+  </div>
+  <div *ngIf="error" class="alert alert-danger" id="error-wrapper">
+    <h4></h4>
+     <p>Oh no! An error occurred while querying the API. We apologise for the inconvenience.</p>
+  </div>
+</div>

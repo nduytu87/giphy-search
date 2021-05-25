@@ -1,0 +1,56 @@
+.img-container {
+  position: relative;
+  margin-bottom: 16px;
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    background: url("https://media.giphy.com/media/hWZBZjMMuMl7sWe0x8/giphy.gif");
+    background-size: cover;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+    border: 1px solid #dfe1e5;
+  }
+
+  .overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+    border-radius: 5px;
+  }
+
+  .heart {
+    background: url("/assets/img/heart.svg");
+    display: block;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    .overlay {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .heart {
+      opacity: 1;
+    }
+  }
+
+  .favorited .heart,
+  .favorited .heart:after,
+  .favorited .heart:before {
+    background: url("/assets/img/heart-favorited.svg");
+    opacity: 1;
+  }
+}

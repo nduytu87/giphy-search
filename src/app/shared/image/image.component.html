@@ -1,0 +1,10 @@
+<div class="img-container" (click)="saveFavorite()">
+  <img
+    [src]="giphyGifObject?.images?.fixed_height?.url"
+    width="100%"
+    height="200"
+    class="gallery-img"
+  />
+  <div class="overlay"></div>
+  <div [ngClass]="{ favorited: favorited }"><span class="heart"></span></div>
+</div>

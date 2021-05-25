@@ -1,0 +1,9 @@
+.img-list {
+  display: flex;
+  width: 100%;
+
+  .list-col {
+    margin: 0 16px;
+    flex: 1 1 25%;
+  }
+}

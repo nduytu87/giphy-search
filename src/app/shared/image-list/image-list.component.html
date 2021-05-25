@@ -1,0 +1,22 @@
+<div *ngIf="giphyGifObjects" class="img-list">
+  <div class="list-col">
+    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 0"></app-image>
+    </ng-container>
+  </div>
+  <div class="list-col">
+    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 1"></app-image>
+    </ng-container>
+  </div>
+  <div class="list-col">
+    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 2"></app-image>
+    </ng-container>
+  </div>
+  <div class="list-col">
+    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 3"></app-image>
+    </ng-container>
+  </div>
+</div>
