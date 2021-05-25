@@ -1,6 +1,8 @@
 .img-container {
   position: relative;
   margin-bottom: 16px;
+  min-height: 150px;
+  background: grey;
 
   .gallery-img {
     width: 100%;

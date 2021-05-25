@@ -19,6 +19,7 @@ export class SearchImageComponent implements OnInit {
   query: string = '';
   isShowMore: boolean = false;
   error: boolean = false;
+  loading: boolean = true;
 
   private searchTerms = new Subject<string>();
 
@@ -32,17 +33,19 @@ export class SearchImageComponent implements OnInit {
         debounceTime(300), 
         distinctUntilChanged(),
         switchMap((query: string)=> {
+          //reset all setting before calling search api
+          this.loading = true;
+          this.isShowMore = false;
           this.query = query;
+          this.giphyGifObjects = []
+
           return this.giphyApiService
             .search(this.query, this.giphyGifObjects.length);
         })
       ).subscribe((res: GiphySearchResult) => {
-        this.giphyGifObjects = [];
-        this.pagination = res.pagination;
-        this.giphyGifObjects = [...this.giphyGifObjects, ...res.data];
-        this.checkShowMoreButton();
+        this.processResult(res);
       });
-
+      //load initial
     this.callGiphySearchApi();
   }
 
@@ -60,16 +63,20 @@ export class SearchImageComponent implements OnInit {
     this.giphyApiService
     .search(this.query, this.giphyGifObjects.length)
     .subscribe((res: GiphySearchResult) => {
-      console.log('change');
-      this.pagination = res.pagination;
-      this.giphyGifObjects = [...this.giphyGifObjects, ...res.data];
-      this.checkShowMoreButton();
+      this.processResult(res);
     }, () => {
       this.error = true;
     });
   }
 
-  checkShowMoreButton() {
+  processResult(res: GiphySearchResult) {
+    if (res) {
+      this.loading = false;
+    }
+    this.pagination = res.pagination;
+    this.giphyGifObjects = [...this.giphyGifObjects, ...res.data];
     this.isShowMore = this.pagination.total_count > this.pagination.offset;
   }
+
+  
 }
