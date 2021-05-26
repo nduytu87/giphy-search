@@ -1,6 +1,5 @@
 # GiphyImageSearch
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
+Giphy Search app that allows users to enter a search term into the app and get back 20 giphy responses through the Giphy Search API. The user can click the image that they like to save and see them later. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
 
 ![alt text](https://github.com/nduytu87/giphy-search/blob/main/src/assets/img/giphy-image-search.gif "Giphy Image Search")
 
