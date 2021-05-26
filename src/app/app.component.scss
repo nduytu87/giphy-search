@@ -7,6 +7,15 @@
     align-items: center;
     justify-content: space-between;
 
+    .nav-logo {
+      img {
+        width: 200px;
+        @media screen and (max-width: 768px) {
+          width: 150px;
+        }
+      }
+    }
+
     .nav-links {
       display: flex;
       flex-basis: auto;
@@ -16,9 +25,12 @@
       a {
         padding: 20px;
         text-decoration: none;
-        display: inline-block;
         color: #3d3d3d;
         font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
 
         &:hover {
           background-color: #e6f7ff;

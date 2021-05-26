@@ -1,22 +1,72 @@
-<div *ngIf="giphyGifObjects" class="img-list">
-  <div class="list-col">
-    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
-      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 0"></app-image>
-    </ng-container>
+<div *ngIf="giphyGifObjects">
+  <!-- TODO: refactor columns loop -->
+  <div class="hidden visible-xl">
+    <div class="img-list">
+      <div class="list-col base-4">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 4 === 0"></app-image>
+        </ng-container>
+      </div>
+      <div class="list-col base-4">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 4 === 1"></app-image>
+        </ng-container>
+      </div>
+      <div class="list-col base-4">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 4 === 2"></app-image>
+        </ng-container>
+      </div>
+      <div class="list-col base-4">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 4 === 3"></app-image>
+        </ng-container>
+      </div>
+    </div>
   </div>
-  <div class="list-col">
-    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
-      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 1"></app-image>
-    </ng-container>
+
+  <div class="hidden visible-lg hidden-xl">
+    <div class="img-list">
+      <div class="list-col base-3">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 3 === 0"></app-image>
+        </ng-container>
+      </div>
+      <div class="list-col base-3">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 3 === 1"></app-image>
+        </ng-container>
+      </div>
+      <div class="list-col base-3">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 3 === 2"></app-image>
+        </ng-container>
+      </div>
+    </div>
   </div>
-  <div class="list-col">
-    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
-      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 2"></app-image>
-    </ng-container>
+
+  <div class="hidden visible-md hidden-lg">
+    <div class="img-list">
+      <div class="list-col base-2">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 2 === 0"></app-image>
+        </ng-container>
+      </div>
+      <div class="list-col base-2">
+        <ng-container *ngFor="let image of giphyGifObjects; let i = index">
+          <app-image [giphyGifObject]="image" *ngIf="i % 2 === 1"></app-image>
+        </ng-container>
+      </div>
+    </div>
   </div>
-  <div class="list-col">
-    <ng-container *ngFor="let image of giphyGifObjects; let i = index">
-      <app-image [giphyGifObject]="image" *ngIf="i % 4 === 3"></app-image>
-    </ng-container>
+
+  <div class="hidden-md">
+    <div class="img-list">
+      <div class="list-col">
+        <ng-container *ngFor="let image of giphyGifObjects">
+          <app-image [giphyGifObject]="image"></app-image>
+        </ng-container>
+      </div>
+    </div>
   </div>
 </div>
