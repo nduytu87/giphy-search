@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
 
 ![alt text](https://github.com/nduytu87/giphy-search/blob/main/src/assets/img/giphy-image-search.gif "Giphy Image Search")
+[Demo](https://giphy-image-search.netlify.app/search)
 
 ## Development server
 
