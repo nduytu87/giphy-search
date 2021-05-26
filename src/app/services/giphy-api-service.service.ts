@@ -11,6 +11,8 @@ export class GiphyApiService {
   private URL = environment.api.url;
   private params = new HttpParams().set('api_key', environment.api.key);
 
+  query: string = '';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -25,6 +27,7 @@ export class GiphyApiService {
     if (!query.trim()) {
       return of();
     }
+    this.query = query;
     return this.httpClient.get<GiphySearchResult>(this.URL, {
       params: this.params.set('q', query).set('limit', `${limit}`).set('offset', `${offset}`)
     });

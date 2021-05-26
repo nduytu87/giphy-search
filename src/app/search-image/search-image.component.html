@@ -5,6 +5,7 @@
       id="search-box"
       placeholder="Search GIFs..."
       (input)="search(searchBox.value)"
+      [(ngModel)]="query"
     />
   </div>
   <div id="search-result">

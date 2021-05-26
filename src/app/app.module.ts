@@ -10,6 +10,7 @@ import { ImageListComponent } from './shared/image-list/image-list.component';
 import { SavedImageComponent } from './saved-image/saved-image.component';
 import { SearchImageComponent } from './search-image/search-image.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { RouterModule } from '@angular/router';
     SavedImageComponent,
     SearchImageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

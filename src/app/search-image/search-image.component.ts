@@ -29,7 +29,7 @@ export class SearchImageComponent implements OnInit, OnDestroy {
   private searchTerms = new Subject<string>();
 
   constructor(private giphyApiService: GiphyApiService) {
-    this.query = 'singapore';
+    this.query = this.giphyApiService.query ? this.giphyApiService.query : 'Singapore';
   }
 
   ngOnInit(): void {
