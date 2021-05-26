@@ -5,19 +5,15 @@ import {
   debounceTime,
   distinctUntilChanged,
   finalize,
-  switchMap,
+  switchMap
 } from 'rxjs/operators';
-import {
-  GiphyGifObject,
-  GiphyPaginationObject,
-  GiphySearchResult,
-} from '../giphy';
+import { GiphyGifObject, GiphyPaginationObject, GiphySearchResult } from '../giphy';
 import { GiphyApiService } from '../services/giphy-api-service.service';
 
 @Component({
   selector: 'app-search-image',
   templateUrl: './search-image.component.html',
-  styleUrls: ['./search-image.component.scss'],
+  styleUrls: ['./search-image.component.scss']
 })
 export class SearchImageComponent implements OnInit, OnDestroy {
   giphyGifObjects: GiphyGifObject[] = [];
@@ -90,17 +86,15 @@ export class SearchImageComponent implements OnInit, OnDestroy {
   }
 
   searchGiphy() {
-    return this.giphyApiService
-      .search(this.query, this.giphyGifObjects.length)
-      .pipe(
-        finalize(() => {
-          this.hasLoading = false;
-        }),
-        catchError((e) => {
-          this.hasError = true;
-          return throwError(e);
-        })
-      );
+    return this.giphyApiService.search(this.query, this.giphyGifObjects.length).pipe(
+      finalize(() => {
+        this.hasLoading = false;
+      }),
+      catchError((e) => {
+        this.hasError = true;
+        return throwError(e);
+      })
+    );
   }
   ngOnDestroy() {
     if (this.searchTermsChangedSubscription) {

@@ -1,8 +1,8 @@
 export interface GiphySearchResult {
-    data: GiphyGifObject[];
-    pagination: GiphyPaginationObject;
-    meta: GiphyMetaObject;
-  }
+  data: GiphyGifObject[];
+  pagination: GiphyPaginationObject;
+  meta: GiphyMetaObject;
+}
 
 export interface GiphyGifObject {
   type?: string;
@@ -26,50 +26,50 @@ export interface GiphyGifObject {
 }
 
 export interface GiphyPaginationObject {
-    total_count: number;
-    count: number;
-    offset: number;
-  }
-  
-  // https://developers.giphy.com/docs/#metacontent-object
-  export interface GiphyMetaObject {
-    status: number;
-    msg: string;
-    response_id: string;
-  }
+  total_count: number;
+  count: number;
+  offset: number;
+}
 
-  // https://developers.giphy.com/docs/#images-object
+// https://developers.giphy.com/docs/#metacontent-object
+export interface GiphyMetaObject {
+  status: number;
+  msg: string;
+  response_id: string;
+}
+
+// https://developers.giphy.com/docs/#images-object
 export interface GiphyImages {
-    fixed_height_still?: GiphyImageBaseData;
-    original_still?: GiphyImageBaseData;
-    fixed_width?: GiphyImageBaseData;
-    fixed_height_small_still?: GiphyImageBaseData;
-    fixed_height_downsampled?: GiphyImageBaseData;
-    preview?: GiphyImageBaseData;
-    fixed_height_small?: GiphyImageBaseData;
-    downsized_still?: GiphyImageBaseData;
-    downsized?: GiphyImageBaseData;
-    downsized_large?: GiphyImageBaseData;
-    fixed_width_small_still?: GiphyImageBaseData;
-    preview_webp?: GiphyImageBaseData;
-    fixed_width_still?: GiphyImageBaseData;
-    fixed_width_small?: GiphyImageBaseData;
-    downsized_small?: GiphyImageBaseData;
-    fixed_width_downsampled?: GiphyImageBaseData;
-    downsized_medium?: GiphyImageBaseData;
-    original?: GiphyImageBaseData;
-    fixed_height?: GiphyImageBaseData;
-    original_mp4?: GiphyImageBaseData;
-    preview_gif?: GiphyImageBaseData;
-  }
+  fixed_height_still?: GiphyImageBaseData;
+  original_still?: GiphyImageBaseData;
+  fixed_width?: GiphyImageBaseData;
+  fixed_height_small_still?: GiphyImageBaseData;
+  fixed_height_downsampled?: GiphyImageBaseData;
+  preview?: GiphyImageBaseData;
+  fixed_height_small?: GiphyImageBaseData;
+  downsized_still?: GiphyImageBaseData;
+  downsized?: GiphyImageBaseData;
+  downsized_large?: GiphyImageBaseData;
+  fixed_width_small_still?: GiphyImageBaseData;
+  preview_webp?: GiphyImageBaseData;
+  fixed_width_still?: GiphyImageBaseData;
+  fixed_width_small?: GiphyImageBaseData;
+  downsized_small?: GiphyImageBaseData;
+  fixed_width_downsampled?: GiphyImageBaseData;
+  downsized_medium?: GiphyImageBaseData;
+  original?: GiphyImageBaseData;
+  fixed_height?: GiphyImageBaseData;
+  original_mp4?: GiphyImageBaseData;
+  preview_gif?: GiphyImageBaseData;
+}
 
-  // Custom type (most of GiphyImage properties inherits this type)
+// Custom type (most of GiphyImage properties inherits this type)
 export interface GiphyImageBaseData {
-    url: string;
-    width?: string;
-    height?: string;
-  }
+  url: string;
+  width?: string;
+  height?: string;
+}
 
-  export interface FavoritedState {
-    items: GiphyGifObject[];
+export interface FavoritedState {
+  items: GiphyGifObject[];
 }

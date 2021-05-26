@@ -7,10 +7,9 @@ import { FavoriteService } from '../services/favorite.service';
   templateUrl: './saved-image.component.html',
   styleUrls: ['./saved-image.component.scss']
 })
-export class SavedImageComponent{
-
-  //giphyGifObjects!: GiphyGifObject[];
+export class SavedImageComponent {
+  store$ = this.favoriteService.store;
   giphyGifObjects = this.favoriteService.store.getValue().items;
 
-  constructor(private favoriteService: FavoriteService) {  }
+  constructor(private favoriteService: FavoriteService) {}
 }

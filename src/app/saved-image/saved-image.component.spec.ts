@@ -8,9 +8,8 @@ describe('SavedImageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SavedImageComponent ]
-    })
-    .compileComponents();
+      declarations: [SavedImageComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

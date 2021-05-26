@@ -14,22 +14,14 @@
 
     <app-image-list [giphyGifObjects]="giphyGifObjects"></app-image-list>
     <div id="actions-bar">
-      <button
-        *ngIf="hasMoreData"
-        (click)="loadMoreItems()"
-        id="btn-show-more"
-        class="btn-primary"
-      >
+      <button *ngIf="hasMoreData" (click)="loadMoreItems()" id="btn-show-more" class="btn-primary">
         Show More
       </button>
     </div>
   </div>
 
   <div *ngIf="hasError" class="alert alert-danger">
-    <p>
-      Oh no! An error occurred while querying the API. We apologise for the
-      inconvenience.
-    </p>
+    <p>Oh no! An error occurred while querying the API. We apologise for the inconvenience.</p>
   </div>
 </div>
 <div class="d-flex justify-content-center" *ngIf="hasLoading">

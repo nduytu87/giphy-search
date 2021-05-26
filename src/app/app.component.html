@@ -13,9 +13,7 @@
         <span class="hidden visible-md">My Favorited</span>
         <ng-container *ngIf="totalFavorited$ | async as store">
           <ng-container *ngIf="store.items.length > 0">
-            <span class="badge" style="margin-left: 4px">{{
-              store.items.length
-            }}</span>
+            <span class="badge" style="margin-left: 4px">{{ store.items.length }}</span>
           </ng-container>
         </ng-container>
       </a>

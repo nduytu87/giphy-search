@@ -1,8 +1,10 @@
-<div class="container" style="padding-top: 30px">
-  <div id="image-list">
-    <app-image-list [giphyGifObjects]="giphyGifObjects"></app-image-list>
+<ng-container *ngIf="store$ | async as store">
+  <div class="container" style="padding-top: 30px">
+    <div id="image-list">
+      <app-image-list [giphyGifObjects]="store.items"></app-image-list>
+    </div>
+    <div *ngIf="store.items.length == 0" class="alert alert-info">
+      You have no favorited images.
+    </div>
   </div>
-  <div *ngIf="giphyGifObjects.length == 0" class="alert alert-info">
-    You have no favorited images.
-  </div>
-</div>
+</ng-container>

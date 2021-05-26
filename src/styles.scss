@@ -110,7 +110,7 @@ section {
 body {
   line-height: 1;
   background-color: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-variant: normal;
@@ -127,7 +127,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
@@ -166,12 +166,7 @@ button {
   font-weight: 600;
 
   &.btn-primary {
-    background-image: linear-gradient(
-      to right,
-      #00d2ff 0%,
-      #3a7bd5 51%,
-      #00d2ff 100%
-    );
+    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
   }
 
   &:hover {
