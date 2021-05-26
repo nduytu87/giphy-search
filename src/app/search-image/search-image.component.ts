@@ -1,6 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, Subscription } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, finalize, switchMap } from 'rxjs/operators';
+import { Observable, Subject, Subscription, throwError } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  finalize,
+  switchMap,
+} from 'rxjs/operators';
 import {
   GiphyGifObject,
   GiphyPaginationObject,
@@ -33,21 +39,22 @@ export class SearchImageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.searchTermsChangedSubscription = this.searchTerms
       .pipe(
-        debounceTime(300), 
+        debounceTime(300),
         distinctUntilChanged(),
-        switchMap((query: string)=> {
+        switchMap((query: string) => {
           //reset all settings before calling search api
           this.hasLoading = true;
           this.hasMoreData = false;
           this.query = query;
-          this.giphyGifObjects = []
+          this.giphyGifObjects = [];
 
           return this.searchGiphy();
         })
-      ).subscribe((res: GiphySearchResult) => {
+      )
+      .subscribe((res: GiphySearchResult) => {
         this.processResult(res);
       });
-      //load initial
+    //load initial
     this.callGiphySearchApi();
   }
 
@@ -62,19 +69,21 @@ export class SearchImageComponent implements OnInit, OnDestroy {
   }
 
   callGiphySearchApi() {
-    if(this.callGiphySearchApiChangedSubscription) {
+    if (this.callGiphySearchApiChangedSubscription) {
       this.callGiphySearchApiChangedSubscription.unsubscribe();
     }
-    this.callGiphySearchApiChangedSubscription = this.searchGiphy()
-    .subscribe((res: GiphySearchResult) => {
-      this.processResult(res);
-    }, () => {
-      this.hasError = true;
-    });
+    this.callGiphySearchApiChangedSubscription = this.searchGiphy().subscribe(
+      (res: GiphySearchResult) => {
+        this.processResult(res);
+      },
+      () => {
+        this.hasError = true;
+      }
+    );
   }
 
   processResult(res: GiphySearchResult) {
-    this.hasNotData = res.data.length > 0 ? false: true;
+    this.hasNotData = res.data.length > 0 ? false : true;
     this.pagination = res.pagination;
     this.giphyGifObjects = [...this.giphyGifObjects, ...res.data];
     this.hasMoreData = this.pagination.total_count > this.pagination.offset;
@@ -82,19 +91,23 @@ export class SearchImageComponent implements OnInit, OnDestroy {
 
   searchGiphy() {
     return this.giphyApiService
-    .search(this.query, this.giphyGifObjects.length)
-    .pipe(finalize(() => {
-      this.hasLoading = false;
-    }))
-    ;
+      .search(this.query, this.giphyGifObjects.length)
+      .pipe(
+        finalize(() => {
+          this.hasLoading = false;
+        }),
+        catchError((e) => {
+          this.hasError = true;
+          return throwError(e);
+        })
+      );
   }
   ngOnDestroy() {
-    if(this.searchTermsChangedSubscription) {
+    if (this.searchTermsChangedSubscription) {
       this.searchTermsChangedSubscription.unsubscribe();
     }
-    if(this.callGiphySearchApiChangedSubscription) {
+    if (this.callGiphySearchApiChangedSubscription) {
       this.callGiphySearchApiChangedSubscription.unsubscribe();
     }
   }
-  
 }
