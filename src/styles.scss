@@ -146,6 +146,9 @@ input:focus {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
+  &.main-content {
+    padding: 30px 16px;
+  }
 }
 
 button {

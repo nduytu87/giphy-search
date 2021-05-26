@@ -16,12 +16,7 @@ export class ImageComponent implements OnInit {
   giphyGifObjects!: GiphyGifObject[];
   store$ = this.favoriteService.store.asObservable();
 
-  constructor(private favoriteService: FavoriteService) {
-    this.favoriteService.store.subscribe((state) => {
-      const { items } = state;
-      this.giphyGifObjects = items;
-    });
-  }
+  constructor(private favoriteService: FavoriteService) {}
 
   ngOnInit(): void {
     this.giphyGifObjects = this.favoriteService.store.getValue().items;
