@@ -71,9 +71,6 @@ export class SearchImageComponent implements OnInit, OnDestroy {
     this.callGiphySearchApiChangedSubscription = this.searchGiphy().subscribe(
       (res: GiphySearchResult) => {
         this.processResult(res);
-      },
-      () => {
-        this.hasError = true;
       }
     );
   }

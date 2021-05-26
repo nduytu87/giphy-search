@@ -1,7 +1,9 @@
 <div id="header">
   <div class="container">
     <div class="nav-logo">
-      <img width="200" src="/assets/img/logo.gif" alt="Giphy Searcher" />
+      <a routerLink="search" routerLinkActive="active">
+        <img width="200" src="/assets/img/logo.gif" alt="Giphy Searcher" />
+      </a>
     </div>
     <nav class="nav-links">
       <a routerLink="search" routerLinkActive="active">
@@ -11,10 +13,8 @@
       <a routerLink="saved" routerLinkActive="active" class="link-favorite">
         <img class="hidden-md" src="/assets/img/heart.svg" width="30" />
         <span class="hidden visible-md">My Favorited</span>
-        <ng-container *ngIf="totalFavorited$ | async as store">
-          <ng-container *ngIf="store.items.length > 0">
-            <span class="badge" style="margin-left: 4px">{{ store.items.length }}</span>
-          </ng-container>
+        <ng-container *ngIf="totalFavorited$ | async as totalFavorited">
+          <span class="badge">{{ totalFavorited }}</span>
         </ng-container>
       </a>
     </nav>

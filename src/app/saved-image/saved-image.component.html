@@ -1,9 +1,9 @@
-<ng-container *ngIf="store$ | async as store">
+<ng-container *ngIf="giphyGifObjects$ | async as giphyGifObjects">
   <div class="container main-content">
     <div id="image-list">
-      <app-image-list [giphyGifObjects]="store.items"></app-image-list>
+      <app-image-list [giphyGifObjects]="giphyGifObjects"></app-image-list>
     </div>
-    <div *ngIf="store.items.length == 0" class="alert alert-info">
+    <div *ngIf="giphyGifObjects.length == 0" class="alert alert-info">
       You have no favorited images.
     </div>
   </div>

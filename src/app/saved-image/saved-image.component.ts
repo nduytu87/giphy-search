@@ -9,7 +9,7 @@ import { FavoriteService } from '../services/favorite.service';
 })
 export class SavedImageComponent {
   store$ = this.favoriteService.store;
-  giphyGifObjects = this.favoriteService.store.getValue().items;
+  giphyGifObjects$ = this.favoriteService.items$;
 
   constructor(private favoriteService: FavoriteService) {}
 }

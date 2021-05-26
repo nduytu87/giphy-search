@@ -10,5 +10,5 @@
     />
   </picture>
   <div class="overlay"></div>
-  <div [ngClass]="{ favorited: favorited }"><span class="heart"></span></div>
+  <div [ngClass]="{ favorited: favorited$ | async }"><span class="heart"></span></div>
 </div>
