@@ -3,7 +3,7 @@ Giphy Search app that allows users to enter a search term into the app and get b
 
 ![alt text](https://github.com/nduytu87/giphy-search/blob/main/src/assets/img/giphy-image-search.gif "Giphy Image Search")
 
-[Demo](https://giphy-image-search.netlify.app/search)
+[Demo](https://giphy-image-search.netlify.app/search){:target="_blank" rel="noopener"} 
 
 ## Development server
 
